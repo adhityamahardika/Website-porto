@@ -1,0 +1,123 @@
+/* RESET & BASE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+}
+
+/* CSS GRID — PAGE LAYOUT */
+body {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header  header"
+        "sidebar content"
+        "footer  footer";
+    min-height: 100vh;
+}
+
+header  { grid-area: header; }
+nav     { grid-area: sidebar; }
+main    { grid-area: content; }
+footer  { grid-area: footer; }
+
+/* HEADER */
+header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #ccc;
+}
+
+/* SIDEBAR / NAV */
+nav {
+    padding: 1.5rem 1rem;
+    border-right: 1px solid #ccc;
+}
+
+nav a {
+    display: block;
+    margin-bottom: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* MAIN */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem 2rem;
+}
+
+main section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* About */
+#about .about-body {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+#about .about-body img {
+    flex-shrink: 0;
+}
+
+/* Education */
+#education .articles {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+#education article {
+    flex: 1 1 200px;
+}
+
+/* FOOTER */
+footer {
+    padding: 1rem 2rem;
+    border-top: 1px solid #ccc;
+    text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "content"
+            "footer";
+    }
+
+    nav {
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+    }
+
+    nav a {
+        display: inline-block;
+        margin-right: 1rem;
+    }
+
+    #about .about-body,
+    #education .articles {
+        flex-direction: column;
+    }
+}
